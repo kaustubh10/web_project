@@ -1,0 +1,61 @@
+{% load staticfiles %}
+<html>
+	<head>
+		<title>{{ userprofile.user }}</title>
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="{% static "css/profile.css" %}" />
+	</head>
+	<body>
+		<div class="container">
+	<div class="row">
+		<div class="col-lg-3 col-sm-6">
+
+            <div class="card hovercard">
+                <div class="cardheader" >
+			
+		
+		</div>
+                <div class="avatar">
+                    <img alt="" src="{{ userprofile.profile_pic.url }}">
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a target="_blank" href="#">{{ userprofile.user }}</a>
+                    </div>
+                    <div class="desc"><strong>Name:</strong> {{ userprofile.user.first_name }} {{ userprofile.user.last_name }}</div>
+                    <div class="desc"><strong>Hometown:</strong> {{ userprofile.hometown }}</div>
+                    <div class="desc"><strong>Current city:</strong> {{ userprofile.currrent_city }}</div>
+		    <div class="desc"><strong>Student or Professional:</strong> {{ userprofile.profession }}</div>
+		    <div class="desc"><strong>Institution/Organisation:</strong> {{ userprofile.institution }}</div>
+		    <div class="desc"><strong>About me: </strong> {{ userprofile.about_me }}</div>
+		    <div class="desc"><strong>Categories added:</strong> 
+			{% for category in categories %}
+				<a href='/wallpost/{{ category.slug }}/'>{{ category.name }}</a>		
+			{% endfor %}	
+		    </div>
+		    <div class="desc"><strong>Posts: </strong> 
+			{% for post in posts %}
+				<a href='/wallpost/{{ post.category.slug }}/{{ post.id }}/'>{{ post.title }}</a>
+			{% endfor %}
+			<button type="button" class="btn btn-info" href='/wallpost/update_profile/'>
+          			<span class="glyphicon glyphicon-pencil"></span> Edit
+        		</button>
+		    </div>
+                </div>
+     
+            </div>
+
+        </div>
+
+	</div>
+</div>
+	</body>
+</html>

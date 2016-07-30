@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>WallPost</title>
+		<meta charset="utf-8">
+    		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    		<meta name="description" content="">
+    		<meta name="author" content="">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		    <!-- Bootstrap core CSS -->
+    		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    		<link href="http://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    		<!-- Custom styles for this template -->
+    		<link href="http://getbootstrap.com/examples/cover/cover.css" rel="stylesheet">
+		<script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+	</head>
+	<body>
+		
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">WallPost</h3>
+		
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="{% url 'add_category' %}">Add Category</a></li>
+		  <li class="active"><a href="{% url 'view_profile' %}">View Profile</a></li>
+		  <li class="active"><a href="{% url 'view_profile' %}">View Profile</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+		
+          <div class="inner cover">
+            <h1 class="cover-heading">Welcome {{ user.username }}</h1>
+	    <h2 class="cover-heading">Categories</h2>
+	    {% if category %}
+            {% for cat in category %}
+		<div class="list-group">
+  			<a href="{% url '' %}" class="list-group-item">{{ cat.name }}</a><small>by {{ cat.category_user.username }}</small>
+		</div>
+	    {% endfor %}
+            {% else %}
+		<strong>No categories to show</strong>
+	    {% endif %}
+          </div>
+		
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+	<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+	<script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+	</body>
+</html>
